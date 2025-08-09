@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic CV | Makanjuola Olawale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Deep Teal & Gold -->
+    <!-- Application Structure Plan: The infographic follows a top-down narrative to sell the candidate. It starts with a strong headline (Name/Title), hooks the viewer with quantifiable achievements (KPIs), visualizes core skills (Radar Chart), details technical knowledge (Tech Stack), proves initiative (Projects), and finally provides background (Timeline). This structure is designed to quickly impress a recruiter and then provide deepening layers of evidence. Interactive features are now pre-generated and shown in dropdowns for instant access. -->
+    <!-- Visualization & Content Choices: 
+        - CV Data: Key Achievements -> Goal: Inform -> Viz: Single Big Number cards.
+        - CV Data: Core Skill Areas -> Goal: Compare -> Viz: Radar Chart (Chart.js).
+        - CV Data: Specific Technologies -> Goal: Organize -> Viz: Grouped lists in cards with interactive dropdowns for explanations.
+        - CV Data: Personal Projects -> Goal: Organize/Show Process -> Viz: 3-Column Flow Diagram with interactive dropdowns for analysis.
+        - CV Data: Career History -> Goal: Show Change -> Viz: Vertical Timeline (HTML/Tailwind).
+        - All implementations use Chart.js for Canvas rendering or structured HTML/Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3, h4, .stat-number {
+            font-family: 'Teko', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .interactive-button {
+            background-color: #C4A35A;
+            color: #003B46;
+            transition: all 0.3s ease;
+        }
+        .interactive-button:hover {
+            background-color: #003B46;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .interactive-button.active {
+             background-color: #003B46;
+            color: #ffffff;
+        }
+        .explain-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 4px;
+            font-size: 0.8em;
+            display: inline;
+            vertical-align: middle;
+            transition: transform 0.2s;
+        }
+        .explain-button:hover {
+            transform: scale(1.2);
+        }
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            background-color: #eaf2f3;
+            border-left: 3px solid #07575B;
+        }
+        .dropdown-content.show {
+            max-height: 500px; /* Adjust as needed */
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="text-[#333333]">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+
+        <header class="text-center p-8 bg-[#003B46] text-white rounded-t-lg shadow-2xl">
+            <h1 class="text-6xl md:text-8xl tracking-wider">MAKANJUOLA OLAWALE</h1>
+            <h2 class="text-3xl md:text-4xl text-[#C4A35A] tracking-widest mt-2">SYSTEM ADMINISTRATOR</h2>
+            <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-200">
+                A proactive System Administrator with 4+ years of experience specializing in the administration, security, and automation of hybrid Linux & Windows environments.
+            </p>
+        </header>
+
+        <main class="bg-white shadow-2xl rounded-b-lg">
+
+            <section id="kpis" class="p-8 border-b-4 border-[#C4A35A]">
+                <h3 class="text-4xl text-center text-[#003B46] mb-8">Key Career Achievements</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-[#07575B]">
+                        <p class="text-2xl text-[#003B46]">Uptime SLA</p>
+                        <p class="stat-number text-7xl text-[#07575B] mt-2">99.9%</p>
+                        <p class="text-gray-600">Consistently Met</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-[#07575B]">
+                        <p class="text-2xl text-[#003B46]">Downtime Incidents</p>
+                        <p class="stat-number text-7xl text-[#07575B] mt-2">-35%</p>
+                        <p class="text-gray-600">Reduced via Proactive Monitoring</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-[#07575B]">
+                        <p class="text-2xl text-[#003B46]">Ticket Resolution</p>
+                        <p class="stat-number text-7xl text-[#07575B] mt-2">-30%</p>
+                        <p class="text-gray-600">Time Reduced via Automation</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-[#07575B]">
+                        <p class="text-2xl text-[#003B46]">WSUS Sync Times</p>
+                        <p class="stat-number text-7xl text-[#07575B] mt-2">-40%</p>
+                        <p class="text-gray-600">Improved via Scripting</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center border-b-2 border-gray-100">
+                <div>
+                    <h3 class="text-4xl text-[#003B46] mb-4">Core Competency Matrix</h3>
+                    <p class="text-lg text-gray-700 mb-4">
+                        A visual representation of key strengths across critical domains of system administration. This demonstrates a well-rounded and balanced skill set essential for managing modern, complex IT infrastructure.
+                    </p>
+                     <p class="text-lg text-gray-700">
+                        The chart highlights deep expertise in server and network administration, complemented by strong capabilities in automation and security, ensuring both high performance and resilience.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="skillsRadarChart"></canvas>
+                </div>
+            </section>
+            
+            <section id="tech-stack" class="p-8 bg-gray-50 border-b-2 border-gray-100">
+                <h3 class="text-4xl text-center text-[#003B46] mb-8">Technology Stack</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-2xl text-[#07575B] mb-3">Monitoring & Observability</h4>
+                        <ul class="list-disc list-inside text-gray-800 space-y-1">
+                            <li>Zabbix<button class="explain-button" data-tech="Zabbix">✨</button></li>
+                            <li>Prometheus & Grafana<button class="explain-button" data-tech="PrometheusGrafana">✨</button></li>
+                            <li>PRTG<button class="explain-button" data-tech="PRTG">✨</button></li>
+                            <li>Node/Blackbox Exporters<button class="explain-button" data-tech="Exporters">✨</button></li>
+                        </ul>
+                        <div class="dropdown-content mt-2" data-dropdown="Zabbix"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="PrometheusGrafana"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="PRTG"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="Exporters"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-2xl text-[#07575B] mb-3">Automation & Scripting</h4>
+                        <ul class="list-disc list-inside text-gray-800 space-y-1">
+                            <li>PowerShell<button class="explain-button" data-tech="PowerShell">✨</button></li>
+                            <li>Bash<button class="explain-button" data-tech="Bash">✨</button></li>
+                            <li>Python<button class="explain-button" data-tech="Python">✨</button></li>
+                        </ul>
+                        <div class="dropdown-content mt-2" data-dropdown="PowerShell"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="Bash"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="Python"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-2xl text-[#07575B] mb-3">Security</h4>
+                        <ul class="list-disc list-inside text-gray-800 space-y-1">
+                            <li>Wazuh SIEM<button class="explain-button" data-tech="Wazuh">✨</button></li>
+                            <li>Snyk<button class="explain-button" data-tech="Snyk">✨</button></li>
+                            <li>Firewall Configuration<button class="explain-button" data-tech="Firewall">✨</button></li>
+                            <li>SSL/TLS Encryption<button class="explain-button" data-tech="SSL">✨</button></li>
+                        </ul>
+                        <div class="dropdown-content mt-2" data-dropdown="Wazuh"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="Snyk"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="Firewall"></div>
+                        <div class="dropdown-content mt-2" data-dropdown="SSL"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="p-8">
+                <h3 class="text-4xl text-center text-[#003B46] mb-2">Initiative & Problem Solving</h3>
+                <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Beyond daily duties, personal projects demonstrate a passion for improvement and a proactive approach to solving common IT challenges.</p>
+                <div class="space-y-8">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <h4 class="text-2xl text-[#003B46] mb-4">Project: Self-Hosted Help Desk & Asset Portal</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-4">
+                            <div>
+                                <p class="text-xl font-bold text-[#07575B]">Problem</p>
+                                <p class="mt-1">Lack of a centralized system for IT support requests and hardware tracking.</p>
+                            </div>
+                            <div class="border-t-2 md:border-t-0 md:border-l-2 md:border-r-2 border-gray-200 px-4 py-2 md:py-0">
+                                <p class="text-xl font-bold text-[#07575B]">Action</p>
+                                <p class="mt-1">Deployed and configured osTicket on a LAMP stack with custom forms and SSL encryption.</p>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold text-[#07575B]">Result</p>
+                                <p class="mt-1">Created a secure, streamlined platform for all IT service management processes.</p>
+                            </div>
+                        </div>
+                        <button class="interactive-button font-bold py-2 px-4 rounded-lg w-full" data-project="helpdesk">✨ Analyze Project Impact</button>
+                        <div class="dropdown-content mt-2" data-dropdown="helpdesk"></div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <h4 class="text-2xl text-[#003B46] mb-4">Project: WSUS Performance & Cleanup Automation</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-4">
+                            <div>
+                                <p class="text-xl font-bold text-[#07575B]">Problem</p>
+                                <p class="mt-1">WSUS server experiencing slow sync times and API connection timeouts.</p>
+                            </div>
+                            <div class="border-t-2 md:border-t-0 md:border-l-2 md:border-r-2 border-gray-200 px-4 py-2 md:py-0">
+                                <p class="text-xl font-bold text-[#07575B]">Action</p>
+                                <p class="mt-1">Developed PowerShell and SQL scripts to automate database maintenance and cleanup.</p>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold text-[#07575B]">Result</p>
+                                <p class="mt-1">Improved WSUS performance and reduced update synchronization times by over 40%.</p>
+                            </div>
+                        </div>
+                        <button class="interactive-button font-bold py-2 px-4 rounded-lg w-full" data-project="wsus">✨ Analyze Project Impact</button>
+                        <div class="dropdown-content mt-2" data-dropdown="wsus"></div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center p-6 bg-[#003B46] text-white mt-8 rounded-lg shadow-2xl">
+            <h3 class="text-3xl">Contact</h3>
+            <p class="mt-2 text-lg">holamakanjuolao@gmail.com | +234 818 367 6004</p>
+            <p class="mt-1 text-lg">LinkedIn: /in/makanjuola-olawale</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('skillsRadarChart').getContext('2d');
+            const skillsData = {
+                labels: [
+                    'Server Administration',
+                    'Automation & Scripting',
+                    'IT Security',
+                    'Networking',
+                    'Monitoring'
+                ],
+                datasets: [{
+                    label: 'Skill Level',
+                    data: [9, 8, 8.5, 9, 9.5],
+                    backgroundColor: 'rgba(7, 87, 91, 0.2)',
+                    borderColor: '#07575B',
+                    pointBackgroundColor: '#C4A35A',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#07575B',
+                    borderWidth: 2
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'radar',
+                data: skillsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 59, 70, 0.2)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 59, 70, 0.2)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14,
+                                    family: 'Roboto'
+                                },
+                                color: '#333333'
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                color: '#003B46',
+                                font: {
+                                    weight: 'bold'
+                                }
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const preGeneratedContent = {
+                tech: {
+                    Zabbix: "Zabbix is an enterprise-level monitoring solution used to track the status and performance of servers, networks, and applications in real-time.",
+                    PrometheusGrafana: "Prometheus is a powerful data collection tool, while Grafana is a visualization platform used to create dashboards that display that data beautifully.",
+                    PRTG: "PRTG Network Monitor is a comprehensive tool that provides a centralized view of an entire IT infrastructure, from hardware to applications.",
+                    Exporters: "Prometheus Exporters are small programs that collect metrics from third-party systems and convert them into a format Prometheus can understand.",
+                    PowerShell: "PowerShell is a command-line shell and scripting language from Microsoft, essential for automating administrative tasks on Windows systems.",
+                    Bash: "Bash is the standard command-line shell for most Linux distributions, used for scripting and automating tasks in Linux environments.",
+                    Python: "Python is a versatile programming language widely used by system administrators for creating complex automation scripts and integrating different systems.",
+                    Wazuh: "Wazuh is an open-source security platform that provides security monitoring, intrusion detection, and compliance management (SIEM).",
+                    Snyk: "Snyk is a security tool that automatically finds and helps fix vulnerabilities in your code, dependencies, and containers.",
+                    Firewall: "Firewall configuration involves setting up rules to control incoming and outgoing network traffic, acting as a primary defense against unauthorized access.",
+                    SSL: "SSL/TLS Encryption is the standard technology for keeping an internet connection secure and safeguarding any sensitive data being sent between two systems.",
+                },
+                project: {
+                    helpdesk: `<strong>Business Value:</strong> This project directly translates to improved operational efficiency and user satisfaction. By creating a centralized and streamlined support system, it reduces resolution times, provides valuable data on recurring issues, and presents a professional IT service front to all users.
+                               <br><br>
+                               <strong>Next Step:</strong> Integrate a knowledge base into the portal where users can find answers to common questions, further reducing the number of support tickets and empowering users to solve minor issues themselves.`,
+                    wsus: `<strong>Business Value:</strong> This initiative significantly enhances security posture and saves administrative time. By ensuring the patch management system (WSUS) is fast and reliable, it guarantees that critical security updates are deployed promptly across the organization, while automation frees up the IT team to focus on more strategic tasks.
+                           <br><br>
+                           <strong>Next Step:</strong> Develop a comprehensive reporting dashboard in Grafana or a similar tool that visualizes WSUS data, showing patch compliance levels across different departments and flagging systems that are falling behind on updates.`
+                }
+            };
+
+            const toggleDropdown = (button, content) => {
+                const isActive = button.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.interactive-button.active, .explain-button.active').forEach(activeBtn => {
+                    if (activeBtn !== button) {
+                        activeBtn.classList.remove('active');
+                    }
+                });
+                 document.querySelectorAll('.dropdown-content.show').forEach(openDropdown => {
+                    if (openDropdown !== content) {
+                       openDropdown.classList.remove('show');
+                       openDropdown.innerHTML = '';
+                    }
+                });
+
+                if (isActive) {
+                    button.classList.remove('active');
+                    content.classList.remove('show');
+                    content.innerHTML = '';
+                } else {
+                    button.classList.add('active');
+                    content.innerHTML = button.dataset.project ? preGeneratedContent.project[button.dataset.project] : preGeneratedContent.tech[button.dataset.tech];
+                    content.classList.add('show');
+                }
+            };
+
+            document.querySelectorAll('.interactive-button[data-project]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const dropdownId = button.dataset.project;
+                    const dropdownContent = document.querySelector(`.dropdown-content[data-dropdown="${dropdownId}"]`);
+                    toggleDropdown(button, dropdownContent);
+                });
+            });
+            
+            document.querySelectorAll('.explain-button[data-tech]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const techId = button.dataset.tech;
+                    const card = button.closest('.bg-white');
+                    const dropdownContent = card.querySelector(`.dropdown-content[data-dropdown="${techId}"]`);
+                    
+                    if (!dropdownContent) { // A bit of a hacky way to handle multiple dropdowns in one card
+                        card.querySelectorAll('.dropdown-content').forEach(d => {
+                            if(d.dataset.dropdown === techId) {
+                                toggleDropdown(button, d);
+                            }
+                        });
+                    } else {
+                         toggleDropdown(button, dropdownContent);
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
